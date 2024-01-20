@@ -44,6 +44,7 @@ export default function Profile() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
+    const currentUserId = "659d02aabcf803f16c1bbbf8";
     const updateData = {
       userName: data.get("userName"),
       email:  data.get("email"),
@@ -56,7 +57,7 @@ export default function Profile() {
       bio: data.get("bio"),
     };
     try {
-      await axios.patch("http://localhost:8000/api/v1/user/update-account-details", updateData);
+      await axios.patch(`http://localhost:8000/api/v1/user/update-account-details/${currentUserId}`, updateData);
       alert("successfully Updated");
       navigate("/")
       
